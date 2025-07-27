@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Recipes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Recommended Recipes</h1>
+
+        {% if recipes %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Recipe Name</th>
+                            <th>Ingredients</th>
+                            <th>Instructions</th>
+                            <th>Total Time (mins)</th>
+                            <th>Cook Time (mins)</th>
+                            <th>Prep Time (mins)</th>
+                            <th>Allergens</th>
+                            <th>Diet</th>
+                            <th>Nutrition (per 100g)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for recipe in recipes %}
+                            <tr>
+                                <td>{{ recipe['TranslatedRecipeName'] }}</td>
+                                <td>{{ recipe['TranslatedIngredients'] }}</td>
+                                <td>{{ recipe['TranslatedInstructions'] }}</td>
+                                <td>{{ recipe['TotalTimeInMins'] }}</td>
+                                <td>{{ recipe['CookTimeInMins'] }}</td>
+                                <td>{{ recipe['PrepTimeInMins'] }}</td>
+                                <td>{{ recipe['Allergens'] }}</td>
+                                <td>{{ recipe['Diet'] }}</td>
+                                <td>{{ recipe['Nutrition (per 100g)'] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center">No results found for the given search criteria.</p>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Go Back</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, for additional UI functionality) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
